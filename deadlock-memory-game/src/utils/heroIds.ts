@@ -5,7 +5,7 @@ export const HERO_IDS = [
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 50, 52, 58, 60, 63, 64, 65, 
     66, 67, 69, 72, 76, 77, 79, 80, 81] as const
 
-export function getRandomHeroIDS(): number[] {
+export function getRandomHeroIDs(): number[] {
     const gameHeroes = shuffle(HERO_IDS).slice(0,10);
     return gameHeroes
 }

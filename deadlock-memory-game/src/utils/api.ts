@@ -1,4 +1,3 @@
-import { resourceUsage } from "process";
 import { Hero } from "../types"
 
 const baseURL = "https://assets.deadlock-api.com/v2/heroes/"

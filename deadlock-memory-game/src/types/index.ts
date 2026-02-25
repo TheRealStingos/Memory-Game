@@ -5,3 +5,5 @@ export type Hero = {
     icon_hero_card: string;
   };
 };
+
+export type GameStatus = "loading" | "playing" | "won" | "lost";
