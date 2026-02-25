@@ -1,4 +1,4 @@
-import { Hero } from "../types"
+import type { Hero } from "../types"
 import { Card } from "./Card";
 
 type CardGridProps = {

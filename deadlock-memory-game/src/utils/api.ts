@@ -1,4 +1,4 @@
-import { Hero } from "../types"
+import type { Hero } from "../types"
 
 const baseURL = "https://assets.deadlock-api.com/v2/heroes/"
 

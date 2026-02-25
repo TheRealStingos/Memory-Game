@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Hero, GameStatus } from "../types";
+import type { Hero, GameStatus } from "../types";
 import { getRandomHeroIDs } from "../utils/heroIds";
 import { fetchHeroes } from "../utils/api";
 import { shuffle } from "../utils/shuffle";

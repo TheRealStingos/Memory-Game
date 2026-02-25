@@ -1,4 +1,4 @@
-import { Hero } from "../types";
+import type { Hero } from "../types";
 
 type CardProps = {
     hero: Hero;
