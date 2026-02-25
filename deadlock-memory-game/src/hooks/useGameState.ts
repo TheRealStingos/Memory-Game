@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Hero, GameStatus } from "../types";
 import { getRandomHeroIDs } from "../utils/heroIds";
 import { fetchHeroes } from "../utils/api";
@@ -10,6 +10,10 @@ export function useGameState() {
     const [bestScore, setBestScore] = useState<number>(Number(localStorage.getItem("bestScore")) || 0)
     const [status, setStatus] = useState<GameStatus>("loading");
     const [clickedIds, setClickedIds] = useState<Set<number>>(new Set());
+
+    useEffect(() => {
+        initGame();
+    }, []);
     
     async function initGame() {
         setStatus("loading");
@@ -46,4 +50,12 @@ export function useGameState() {
             }
         }
     }
+    return {
+        heroes,
+        score,
+        bestScore,
+        status,
+        handleCardClick,
+        initGame,
+    };
 }
