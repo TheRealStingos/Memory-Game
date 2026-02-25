@@ -8,6 +8,7 @@ import './App.css'
 function App() {
   const { heroes, score, bestScore, status, handleCardClick, initGame } = useGameState();
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const voiceLineRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
@@ -16,7 +17,6 @@ function App() {
     audio.loop = true;
     audio.volume = volume;
     audioRef.current = audio;
-
     return () => {
       audio.pause();
       audio.currentTime = 0;
@@ -24,21 +24,31 @@ function App() {
   }, []);
 
   useEffect(() => {
-  if (status === "lost") {
-    if (audioRef.current) {
-      audioRef.current.pause();
+    if (status === "won") {
+      if (audioRef.current) audioRef.current.pause();
+      const winVoiceLine = new Audio('/src/assets/Viscous_win.mp3');
+      voiceLineRef.current = winVoiceLine;
+      winVoiceLine.play();
     }
-    const loseVoiceLine = new Audio('/src/assets/Viscous_lose.mp3');
-    loseVoiceLine.play();
-  }
-}, [status]);
+    if (status === "lost") {
+      if (audioRef.current) audioRef.current.pause();
+      const loseVoiceLine = new Audio('/src/assets/Viscous_lose.mp3');
+      voiceLineRef.current = loseVoiceLine;
+      loseVoiceLine.play();
+    }
+  }, [status]);
 
   function handleStart() {
+    if (voiceLineRef.current) {
+      voiceLineRef.current.pause();
+      voiceLineRef.current.currentTime = 0;
+      voiceLineRef.current = null;
+    }
     const startVoiceLine = new Audio('/src/assets/Viscous_start.mp3');
     startVoiceLine.play();
     startVoiceLine.addEventListener("ended", () => {
       if (audioRef.current) {
-        audioRef.current.currentTime = 0; audioRef.current.play()
+        audioRef.current.currentTime = 0;
         audioRef.current.play();
       }
     });
@@ -83,7 +93,7 @@ function App() {
         status={status}
         score={score}
         bestScore={bestScore}
-        onRestart={initGame}
+        onRestart={handleStart}
       />
     </div>
   )
