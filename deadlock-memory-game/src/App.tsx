@@ -74,7 +74,6 @@ function App() {
     <div>
       <WelcomeModal status={status} onStart={handleStart} />
       <div>
-        <button onClick={handleMute}>{isMuted ? "Unmute" : "Mute"}</button>
         <input
           type="range"
           min="0"
@@ -83,6 +82,10 @@ function App() {
           value={volume}
           onChange={handleVolume}
         />
+        <button onClick={handleMute} id='volume-button'>{isMuted ? "🔇" : "🔊"}</button>
+      </div>
+      <div>
+        <img src={score < 5 ? "/src/assets/Viscous_card.png" : "/src/assets/Viscous_Gloat.png"}/>
       </div>
       <div>
         <h1>Current Score: {score}</h1>
