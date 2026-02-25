@@ -12,12 +12,17 @@ export function useGameState() {
     const [clickedIds, setClickedIds] = useState<Set<number>>(new Set());
     
     async function initGame() {
-        setStatus("loading");
-        const fetchedHeroes = await fetchHeroes(getRandomHeroIDs())
-        setHeroes(fetchedHeroes);
-        setScore(0);
-        setClickedIds(new Set());
-        setStatus("playing");
+        try {
+            setStatus("loading");
+            const fetchedHeroes = await fetchHeroes(getRandomHeroIDs())
+            setHeroes(fetchedHeroes);
+            setScore(0);
+            setClickedIds(new Set());
+            setStatus("playing");
+        }
+        catch (error){
+            setStatus( "error" as GameStatus)
+        }
     }
 
     function handleCardClick(id: number) {

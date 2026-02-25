@@ -73,24 +73,38 @@ function App() {
   return (
     <div>
       <WelcomeModal status={status} onStart={handleStart} />
-      <div>
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={volume}
-          onChange={handleVolume}
-        />
-        <button onClick={handleMute} id='volume-button'>{isMuted ? "🔇" : "🔊"}</button>
+      <div className='flex flex-row-reverse items-center justify-between'>
+        <div>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolume}
+          />
+          <button onClick={handleMute} id='volume-button'>{isMuted ? "🔇" : "🔊"}</button>
+        </div>
+
+        <div className='flex items-center'>
+          <div>
+            <img src={score < 5 ? "/src/assets/Viscous_card.png" : "/src/assets/Viscous_Gloat.png"} className='max-w-30'/>
+          </div>
+          <div>
+            <h1>Current Score: {score}</h1>
+            <h1>Best Score: {bestScore}</h1>
+          </div>
+        </div>
       </div>
-      <div>
-        <img src={score < 5 ? "/src/assets/Viscous_card.png" : "/src/assets/Viscous_Gloat.png"}/>
+
+      {status === "error" && (
+        <div className="flex flex-col items-center justify-center m-15">
+        <h1>Failed to load heroes</h1>
+        <p>Please check your connection and try again</p>
+        <button onClick={initGame}>Retry</button>
       </div>
-      <div>
-        <h1>Current Score: {score}</h1>
-        <h1>Best Score: {bestScore}</h1>
-      </div>
+      )}
+
       <CardGrid heroes={heroes} onClick={handleCardClick} />
       <GameOverModal
         status={status}
