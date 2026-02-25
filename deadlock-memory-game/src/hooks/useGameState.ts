@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Hero, GameStatus } from "../types";
 import { getRandomHeroIDs } from "../utils/heroIds";
 import { fetchHeroes } from "../utils/api";
@@ -8,12 +8,8 @@ export function useGameState() {
     const [heroes, setHeroes] = useState<Hero[]>([]);
     const [score, setScore] = useState<number>(0);
     const [bestScore, setBestScore] = useState<number>(Number(localStorage.getItem("bestScore")) || 0)
-    const [status, setStatus] = useState<GameStatus>("loading");
+    const [status, setStatus] = useState<GameStatus>("idle");
     const [clickedIds, setClickedIds] = useState<Set<number>>(new Set());
-
-    useEffect(() => {
-        initGame();
-    }, []);
     
     async function initGame() {
         setStatus("loading");

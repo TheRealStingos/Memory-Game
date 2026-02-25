@@ -8,7 +8,7 @@ type CardGridProps = {
 
 export function CardGrid({ heroes, onClick }: CardGridProps){
     return (
-        <div>
+        <div className="grid grid-cols-5 gap-30">
             {heroes.map(hero => (
                 <Card
                 key={hero.id}

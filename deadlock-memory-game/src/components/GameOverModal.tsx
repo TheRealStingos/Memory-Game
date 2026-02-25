@@ -13,11 +13,13 @@ export function GameOverModal({ status, score, bestScore, onRestart }: GameOverM
         return null;
     }
     return (
-        <div>
-            <h1>{status === "won" ? "You Win!" : "Game Over!"}</h1>
-            <h1>{score}</h1>
-            <h1>{bestScore}</h1>
-            <button onClick={onRestart}>Play Again?</button>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+            <div className="bg-gray-800 rounded-xl p-8 flex flex-col items-center gap-4 shadow-2xl">
+                <h1>{status === "won" ? "You Win!" : "Game Over!"}</h1>
+                <h1>Your Score: {score}</h1>
+                <h1>High Score: {bestScore}</h1>
+                <button onClick={onRestart}>Play Again?</button>
+            </div>
         </div>
     )        
 }
