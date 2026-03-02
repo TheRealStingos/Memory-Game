@@ -11,11 +11,6 @@ export function Card({ hero, onClick, shufflePhase }: CardProps) {
   return (
     <Tilt
         tiltReverse
-        reset
-        glareEnable={true}
-        glareMaxOpacity={0.2}
-        glareColor="#fff"
-        glarePosition="all"
         className="min-h-80 min-w-60 cursor-pointer"
     >
         <div onClick={onClick} className="w-full h-full">
