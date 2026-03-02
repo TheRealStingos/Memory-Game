@@ -7,3 +7,4 @@ export type Hero = {
 };
 
 export type GameStatus = "idle" | "loading" | "playing" | "won" | "lost" | "error";
+export type ShufflePhase = "idle" | "flipping" | "dealing";

@@ -6,7 +6,7 @@ import { WelcomeModal } from './components/WelcomeModal'
 import './App.css'
 
 function App() {
-  const { heroes, score, bestScore, status, handleCardClick, initGame } = useGameState();
+  const { heroes, score, bestScore, status, shufflePhase, handleCardClick, initGame } = useGameState();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const voiceLineRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
@@ -73,8 +73,8 @@ function App() {
   return (
     <div>
       <WelcomeModal status={status} onStart={handleStart} />
-      <div className='flex flex-row-reverse items-center justify-between border-4 border-deadlock backdrop-blur-md rounded-md'>
-        <div>
+      <div className='flex flex-row-reverse items-center justify-between border-4 border-deadlock backdrop-blur-xs rounded-md'>
+        <div className='flex flex-col-reverse mr-4'>
           <input
             type="range"
             min="0"
@@ -83,7 +83,7 @@ function App() {
             value={volume}
             onChange={handleVolume}
           />
-          <button onClick={handleMute} id='volume-button'>{isMuted ? "🔇" : "🔊"}</button>
+          <button onClick={handleMute} id='volume-button' className='m-2' >{isMuted ? "🔇 Unmute" : "🔊 Mute"}</button>
         </div>
 
         <div className='flex items-center'>
@@ -105,7 +105,7 @@ function App() {
       </div>
       )}
 
-      <CardGrid heroes={heroes} onClick={handleCardClick} />
+      <CardGrid heroes={heroes} onClick={handleCardClick} shufflePhase={shufflePhase} />
       <GameOverModal
         status={status}
         score={score}

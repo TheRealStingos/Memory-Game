@@ -7,6 +7,7 @@
 
 @theme {
   --color-deadlock: #3B2B2C;
+  --color-deadlock-inverse: #303D3C;
 }
 
 :root {

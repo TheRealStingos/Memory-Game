@@ -1,19 +1,21 @@
-import type { Hero } from "../types"
+import type { Hero, ShufflePhase } from "../types"
 import { Card } from "./Card";
 
 type CardGridProps = {
     heroes: Hero[];
     onClick: (id: number) => void;
+    shufflePhase: ShufflePhase;
 }
 
-export function CardGrid({ heroes, onClick }: CardGridProps){
+export function CardGrid({ heroes, onClick, shufflePhase }: CardGridProps){
     return (
-        <div className="grid grid-cols-5 gap-10 max-h-180 mt-20">
+        <div className="grid grid-cols-5 gap-10 max-h-180 mt-10">
             {heroes.map(hero => (
                 <Card
                 key={hero.id}
                 hero={hero}
                 onClick={() => onClick(hero.id)}
+                shufflePhase={shufflePhase}
                 />
             ))}
         </div>
