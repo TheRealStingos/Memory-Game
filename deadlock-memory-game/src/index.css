@@ -5,6 +5,10 @@
   src: url('/src/assets/valveoracle-medium.ttf') format('truetype');
 }
 
+@theme {
+  --color-deadlock: #3B2B2C;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

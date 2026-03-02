@@ -44,3 +44,8 @@
 #volume-button {
   background: none;
 }
+
+body {
+  background: url(/src/assets/deadlock_background.jpg) no-repeat center;
+  background-size: cover;
+}

@@ -73,7 +73,7 @@ function App() {
   return (
     <div>
       <WelcomeModal status={status} onStart={handleStart} />
-      <div className='flex flex-row-reverse items-center justify-between'>
+      <div className='flex flex-row-reverse items-center justify-between border-4 border-deadlock backdrop-blur-md rounded-md'>
         <div>
           <input
             type="range"
@@ -88,7 +88,7 @@ function App() {
 
         <div className='flex items-center'>
           <div>
-            <img src={score < 5 ? "/src/assets/Viscous_card.png" : "/src/assets/Viscous_Gloat.png"} className='max-w-30'/>
+            <img src={score < 5 ? "/src/assets/Viscous_card.png" : "/src/assets/Viscous_Gloat.png"} className='max-w-30 ml-6 mb-4 rounded-md'/>
           </div>
           <div>
             <h1>Current Score: {score}</h1>

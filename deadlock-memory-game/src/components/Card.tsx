@@ -32,17 +32,18 @@ export function Card({ hero, onClick }: CardProps) {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className="
-        w-60 h-100
-        mt-12
+        min-h-80
+        min-w-40
         cursor-pointer rounded-xl 
-        border border-green-600 
-        shadow-lg hover:shadow-xl"
+        border-4 border-deadlock
+        shadow-lg hover:shadow-xl
+        backdrop-blur-md"
         style={{
         transform: `perspective(600px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
         transition: 'transform 0.1s ease'
         }}>
             <img src ={hero.images.icon_hero_card} alt={hero.name}
-            className="w-full h-70 object-cover" />
+            className="w-full h-50 object-scale-down" />
             <h1>{hero.name}</h1>
         </div>
     )

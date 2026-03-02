@@ -6,4 +6,4 @@ export type Hero = {
   };
 };
 
-export type GameStatus = "idle" | "loading" | "playing" | "won" | "lost";
+export type GameStatus = "idle" | "loading" | "playing" | "won" | "lost" | "error";
