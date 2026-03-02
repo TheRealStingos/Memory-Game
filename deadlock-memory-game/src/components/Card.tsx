@@ -1,5 +1,6 @@
 import type { Hero, ShufflePhase } from "../types";
 import Tilt from 'react-parallax-tilt'; 
+import logo from "../assets/deadlock_logo.png"
 
 type CardProps = {
   hero: Hero;
@@ -20,7 +21,7 @@ export function Card({ hero, onClick, shufflePhase }: CardProps) {
                     <h1>{hero.name}</h1>
                 </div>
                 <div className="card-back rounded-xl border-4 border-deadlock shadow-lg overflow-hidden bg-deadlock">
-                    <img src="/src/assets/deadlock_logo.png" alt="card back" className="w-full h-full object-scale-down rounded-xl" />
+                    <img src={logo} alt="card back" className="w-full h-full object-scale-down rounded-xl" />
                 </div>
             </div>
         </div>

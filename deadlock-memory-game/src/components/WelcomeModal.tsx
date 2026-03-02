@@ -1,4 +1,5 @@
 import type { GameStatus } from "../types"
+import viscousPortrait from "../assets/Viscous_card.png"
 
 type WelcomeModalProps = {
     status: GameStatus;
@@ -13,7 +14,7 @@ export function WelcomeModal({ status, onStart }: WelcomeModalProps) {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
             <div className="bg-deadlock-inverse rounded-xl p-8 flex flex-col items-center gap-4 shadow-2xl">
-                <img src="/src/assets/Viscous_card.png" alt="Viscous Portrait" />
+                <img src={viscousPortrait} alt="Viscous Portrait" />
                 <h1>Help Viscous remember his new friends!<br />
                 Don't click the same hero twice!
                 </h1>

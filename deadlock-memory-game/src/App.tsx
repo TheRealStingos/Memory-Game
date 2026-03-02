@@ -3,6 +3,12 @@ import { useGameState } from './hooks/useGameState'
 import { CardGrid } from './components/CardGrid'
 import { GameOverModal } from './components/GameOverModal'
 import { WelcomeModal } from './components/WelcomeModal'
+import viscousPortait from "../src/assets/Viscous_card.png"
+import viscousGloat from "../src/assets/Viscous_Gloat.png"
+import viscousWin from "../src/assets/Viscous_win.mp3"
+import viscousLose from "../src/assets/Viscous_lose.mp3"
+import viscousStart from "../src/assets/Viscous_start.mp3"
+import music from "../src/assets/Curiosity_shop_music.mp3"
 import './App.css'
 
 function App() {
@@ -13,7 +19,7 @@ function App() {
   const [volume, setVolume] = useState(0.5);
 
   useEffect(() => {
-    const audio = new Audio('/src/assets/Curiosity_shop_music.mp3');
+    const audio = new Audio(music);
     audio.loop = true;
     audio.volume = volume;
     audioRef.current = audio;
@@ -26,13 +32,13 @@ function App() {
   useEffect(() => {
     if (status === "won") {
       if (audioRef.current) audioRef.current.pause();
-      const winVoiceLine = new Audio('/src/assets/Viscous_win.mp3');
+      const winVoiceLine = new Audio(viscousWin);
       voiceLineRef.current = winVoiceLine;
       winVoiceLine.play();
     }
     if (status === "lost") {
       if (audioRef.current) audioRef.current.pause();
-      const loseVoiceLine = new Audio('/src/assets/Viscous_lose.mp3');
+      const loseVoiceLine = new Audio(viscousLose);
       voiceLineRef.current = loseVoiceLine;
       loseVoiceLine.play();
     }
@@ -44,7 +50,7 @@ function App() {
       voiceLineRef.current.currentTime = 0;
       voiceLineRef.current = null;
     }
-    const startVoiceLine = new Audio('/src/assets/Viscous_start.mp3');
+    const startVoiceLine = new Audio(viscousStart);
     startVoiceLine.play();
     startVoiceLine.addEventListener("ended", () => {
       if (audioRef.current) {
@@ -88,7 +94,7 @@ function App() {
 
         <div className='flex items-center'>
           <div>
-            <img src={score < 5 ? "/src/assets/Viscous_card.png" : "/src/assets/Viscous_Gloat.png"} className='max-w-30 ml-6 mb-4 rounded-md'/>
+            <img src={score < 5 ? viscousPortait : viscousGloat} className='max-w-30 ml-6 mb-4 rounded-md'/>
           </div>
           <div>
             <h1>Current Score: {score}</h1>
