@@ -9,7 +9,7 @@ type CardGridProps = {
 
 export function CardGrid({ heroes, onClick, shufflePhase }: CardGridProps){
     return (
-        <div className="grid grid-cols-5 gap-10 max-h-180 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-5 md:gap-10 max-h-180 mt-10">
             {heroes.map(hero => (
                 <Card
                 key={hero.id}
